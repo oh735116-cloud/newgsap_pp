@@ -1,0 +1,83 @@
+/* 전용 접두사를 사용해 기존 Hero·About·실습의 스타일과 분리합니다. */
+.digital-section { background: #eeeee5; color: #243b2c; scroll-margin-top: 0; }
+.digital-stage { padding: 112px 0 48px; overflow: clip; }
+.digital-heading { padding: 0 6vw 30px; }
+.digital-eyebrow { color: #526448; font: 11px var(--font-geist-mono), monospace; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 20px; }
+.digital-heading h2 { font-size: clamp(2.8rem, 5.2vw, 6rem); line-height: 1.05; }
+.digital-heading em { color: #64764b; font-weight: 400; }
+.digital-intro { display: flex; justify-content: space-between; gap: 24px; margin-top: 22px; color: #52604e; font-size: 14px; line-height: 1.8; word-break: keep-all; }
+.digital-scrollHint { display: none; align-items: center; gap: 24px; font: 10px var(--font-geist-mono), monospace; letter-spacing: .12em; }
+.digital-scrollHint span { font-size: 24px; }
+.digital-track { position: relative; }
+/* 한 작품을 한 장의 넓은 전시 지면으로 구성합니다. 카드 외곽선은 사용하지 않습니다. */
+.digital-panel { min-width: 0; padding: 36px 6vw 60px; }
+.digital-visual { display: flex; align-items: center; justify-content: center; background: #d9ddce; padding: clamp(18px, 3vw, 44px); min-width: 0; transform-origin: center; }
+.digital-panel:nth-child(2) .digital-visual { background: #cbd2c1; }
+.digital-panel:nth-child(3) .digital-visual { background: #e1dccc; }
+.digital-panel:nth-child(4) .digital-visual { background: #c3cbb7; }
+.digital-panel:nth-child(5) .digital-visual { background: #dadfce; }
+.digital-device { position: relative; overflow: hidden; background: #172a20; box-shadow: 0 22px 38px #14291e24; }
+.digital-browser { width: 100%; border: 1px solid #ffffff40; border-radius: 9px; }
+.digital-chrome { height: 32px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 14px; background: #f5f5ee; color: #4b5844; font: 9px var(--font-geist-mono), monospace; }
+.digital-dots { font-size: 7px; letter-spacing: 3px; white-space: nowrap; color: #839274; }
+.digital-address { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.digital-screen { position: relative; aspect-ratio: 16 / 10; overflow: hidden; }
+/* 이미지가 없을 때는 색면과 큰 기하 도형으로 작품의 개별 리듬을 표현합니다. */
+.digital-poster { --poster-bg: #213e2d; --poster-ink: #78966a; position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--poster-bg); color: #f5f1e7; }
+.digital-poster-1 { --poster-bg: #171e19; --poster-ink: #7c8a59; }
+.digital-poster-2 { --poster-bg: #b8bf9b; --poster-ink: #526546; color: #182c20; }
+.digital-poster-3 { --poster-bg: #384b30; --poster-ink: #99ad77; }
+.digital-poster-4 { --poster-bg: #e3e4cc; --poster-ink: #8d9c6f; color: #263d2a; }
+.digital-graphic { position: absolute; width: 100%; height: 100%; inset: 0; color: var(--poster-ink); opacity: .7; }
+.digital-posterLabel { position: absolute; top: 22px; left: 22px; font: 8px var(--font-geist-mono), monospace; letter-spacing: .15em; }
+.digital-posterName { position: relative; font-size: clamp(2.5rem, 5vw, 6rem); font-weight: 600; letter-spacing: -.065em; margin: 0 12px; }
+.digital-posterNote { position: absolute; bottom: 22px; right: 22px; font: 8px var(--font-geist-mono), monospace; letter-spacing: .2em; }
+.digital-screenshot { object-fit: cover; object-position: top; }
+.digital-phone { width: min(230px, 80%); border: 7px solid #1b2a20; border-radius: 32px; }
+.digital-phone .digital-screen { aspect-ratio: 9 / 17; }
+.digital-phone .digital-posterName { font-size: 40px; }
+.digital-phone .digital-posterLabel { top: 38px; left: 12px; font-size: 7px; }
+.digital-notch { position: absolute; top: 7px; left: 50%; transform: translateX(-50%); width: 64px; height: 15px; border-radius: 18px; background: #1b2a20; z-index: 2; }
+.digital-caption { display: flex; flex-direction: column; align-items: flex-start; gap: 22px; padding-top: 28px; }
+.digital-index { font: italic 54px Georgia, serif; color: #788963; line-height: 1; }
+.digital-kind { color: #58694c; font: 9px var(--font-geist-mono), monospace; letter-spacing: .14em; margin-bottom: 16px; }
+.digital-caption h3 { font-size: clamp(2.4rem, 3.9vw, 4.6rem); font-weight: 500; line-height: 1.1; letter-spacing: -.065em; overflow-wrap: anywhere; }
+.digital-summary { margin-top: 18px; max-width: 35ch; font-size: 14px; color: #52604e; line-height: 1.8; }
+.digital-tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin-top: 20px; }
+.digital-tags li { padding: 7px 10px; border: 1px solid #9aa689; border-radius: 2px; color: #42563b; font-size: 10px; }
+.digital-links { display: flex; flex-wrap: wrap; gap: 12px; }
+.digital-links a { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 12px 20px; border: 1px solid #354d32; border-radius: 999px; color: #f5f1e7; background: #2b442f; font-size: 12px; white-space: nowrap; }
+.digital-links a + a { background: transparent; color: #2b442f; }
+.digital-links a span { display: inline-block; }
+.digital-links a:hover { background: #46613c; color: #fff; }
+.digital-links a:focus-visible { outline: 3px solid #2b442f; outline-offset: 5px; }
+.digital-footer { display: flex; justify-content: space-between; gap: 16px; margin: 0 6vw; padding-top: 20px; border-top: 1px solid #a7af9766; color: #58694c; font: 9px var(--font-geist-mono), monospace; letter-spacing: .14em; }
+/* 가로 트랙에서는 소개문과 큰 비주얼을 좌우로 배치합니다. 높이가 낮으면 세로 기본값으로 돌아갑니다. */
+.digital-horizontal .digital-stage { height: 100svh; min-height: 760px; padding-top: 105px; }
+.digital-horizontal .digital-track { display: flex; width: 100%; }
+.digital-horizontal .digital-panel { flex: 0 0 94%; display: grid; grid-template-columns: minmax(0, 28fr) minmax(0, 72fr); gap: 3vw; padding: 8px 3vw 28px; }
+.digital-horizontal .digital-panel:first-child { margin-left: 3vw; }
+.digital-horizontal .digital-panel:last-child { margin-right: 3vw; }
+.digital-horizontal .digital-visual { order: 2; height: clamp(350px, 51vh, 670px); }
+.digital-horizontal .digital-caption { order: 1; justify-content: center; padding: 0; gap: 26px; }
+.digital-horizontal .digital-index { font-size: clamp(50px, 6vw, 90px); margin-bottom: 6px; }
+.digital-horizontal .digital-browser { width: min(100%, calc((51vh - 110px) * 1.6)); }
+.digital-horizontal .digital-phone { height: 100%; width: auto; aspect-ratio: 9 / 18; }
+.digital-horizontal .digital-phone .digital-screen { height: 100%; aspect-ratio: auto; }
+.digital-horizontal .digital-scrollHint { display: flex; }
+@media (max-width: 600px) {
+  .digital-stage { padding-top: 96px; }
+  .digital-heading h2 { max-width: 10ch; }
+  .digital-heading { padding-bottom: 12px; }
+  .digital-panel { padding: 24px 6vw 48px; }
+  .digital-visual { padding: 16px; }
+  .digital-caption { gap: 16px; }
+  .digital-index { font-size: 38px; }
+  .digital-posterName { font-size: 32px; }
+  .digital-posterLabel { top: 12px; left: 12px; font-size: 6px; }
+  .digital-posterNote { bottom: 12px; right: 12px; font-size: 6px; }
+  .digital-footer { flex-direction: column; }
+}
+
+/* 고정 헤더가 밝은 전시 배경에서도 읽히도록 상단에 딥그린 띠를 둡니다. */
+.digital-stage { background: linear-gradient(to bottom, #111711 0 84px, #eeeee5 84px 100%); }

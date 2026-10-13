@@ -1,26 +1,119 @@
+/* ====================================
+    PORTFOLIO DESIGN SYSTEM
+   ==================================== */
+
 @import "tailwindcss";
 
+/* 1. 공통 색상 및 폰트 변수 */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #111711;
+  --foreground: #f5f1e7;
+
+  --color-olive: #667c53;
+  --color-ivory: #f5f1e7;
+  --color-gold: #b6a27a;
+  --color-muted: #a8b2a3;
+  --color-surface: #1b241b;
 }
 
+/* 2. Tailwind CSS 테마 */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
+  --color-olive: var(--color-olive);
+  --color-ivory: var(--color-ivory);
+  --color-gold: var(--color-gold);
+  --color-surface: var(--color-surface);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* 3. 전체 페이지 스타일 */
+html {
+  scroll-behavior: auto;
 }
 
 body {
+  margin: 0;
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* 4. 포트폴리오 섹션 공통 스타일 */
+.portfolio-section {
+  position: relative;
+  width: 100%;
+  padding: 120px 24px;
+}
+
+/* 5. 포트폴리오 영문 제목 */
+.portfolio-heading {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+}
+
+/* 6. 설명 텍스트 */
+.portfolio-description {
+  color: var(--color-muted);
+  line-height: 1.9;
+}
+
+/* 7. 포트폴리오 버튼 */
+.portfolio-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  padding: 16px 28px;
+  border: 1px solid var(--color-olive);
+  border-radius: 999px;
+
+  color: var(--color-ivory);
+  background: var(--color-olive);
+
+  font-size: 14px;
+  font-weight: 600;
+
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.portfolio-button:hover {
+  background: #7e9668;
+  border-color: #7e9668;
+}
+
+/* 8. GSAP Custom Cursor 유지 */
+@media (hover: hover) and (pointer: fine) {
+  html.gsap-custom-cursor,
+  html.gsap-custom-cursor body,
+  html.gsap-custom-cursor * {
+    cursor: none !important;
+  }
+}
+
+/* 9. 마그네틱 버튼 최적화 */
+[data-cursor-hover] {
+  will-change: transform;
+}
+
+/* 10. 모바일 디자인 */
+@media (max-width: 768px) {
+  .portfolio-section {
+    padding: 80px 20px;
+  }
+}
+
+/* 11. 애니메이션 접근성 */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
