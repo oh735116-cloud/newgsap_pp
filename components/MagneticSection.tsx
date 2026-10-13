@@ -108,6 +108,7 @@ export default function MagneticSection() {
 
   return (
     <section
+      data-header-tone="light"
       ref={sectionRef}
       className="relative flex min-h-[85vh] flex-col
                  items-center justify-center overflow-hidden

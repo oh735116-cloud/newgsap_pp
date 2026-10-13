@@ -85,6 +85,9 @@ const chapters: Chapter[] = [
 // SVG는 선택된 큐브 면 위에만 표시됩니다.
 
 function MusicSymbol({ type }: { type: GraphicType }) {
+  // SVG 속성은 소수점 3자리로 고정해 서버/브라우저의 삼각함수 정밀도 차이를 제거합니다.
+  const svgValue = (value: number) => value.toFixed(3);
+
   if (type === "music") {
     return (
       <svg
@@ -234,10 +237,10 @@ function MusicSymbol({ type }: { type: GraphicType }) {
           return (
             <rect
               key={i}
-              x={22 + i * 10.6}
-              y={150 - height / 2}
+              x={svgValue(22 + i * 10.6)}
+              y={svgValue(150 - height / 2)}
               width="5"
-              height={height}
+              height={svgValue(height)}
               rx="2.5"
               fill={i % 3 === 0 ? "#DFEDD3" : "#86A77C"}
             />
@@ -261,10 +264,10 @@ function MusicSymbol({ type }: { type: GraphicType }) {
         return (
           <rect
             key={i}
-            x={25 + i * 14}
-            y={150 - height / 2}
+            x={svgValue(25 + i * 14)}
+            y={svgValue(150 - height / 2)}
             width="5"
-            height={height}
+            height={svgValue(height)}
             rx="2.5"
             fill="#789E78"
             opacity="0.7"
@@ -415,6 +418,7 @@ export default function ArtisticCareerSection() {
   return (
     <section
       id="artistic-works"
+      data-header-tone="light"
       ref={sectionRef}
       aria-label="Artistic Journey"
       className="relative isolate overflow-hidden bg-[#111711] text-[#F5F1E7]"

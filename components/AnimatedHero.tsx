@@ -12,11 +12,11 @@ import { useGSAP } from "@gsap/react";
 // 텍스트 분할 플러그인
 import { SplitText } from "gsap/SplitText";
 
-// 스크롤 애니메이션 플러그인
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
 // GSAP 플러그인 등록
-gsap.registerPlugin(useGSAP, SplitText, ScrollTrigger);
+gsap.registerPlugin(useGSAP, SplitText);
+
+// false로 바꾸면 필름 질감을 끄고 기존 배경 오버레이로 복원합니다.
+const HERO_FILM_OVERLAY = true;
 
 export default function AnimatedHero() {
   // ========================================
@@ -35,14 +35,8 @@ export default function AnimatedHero() {
   // 버튼 영역
   const buttonRef = useRef<HTMLDivElement>(null);
 
-  // Hero 텍스트 콘텐츠 전체
-  const contentRef = useRef<HTMLDivElement>(null);
-
   // 배경 동영상
   const videoRef = useRef<HTMLVideoElement>(null);
-
-  // 동영상 위의 어두운 오버레이
-  const overlayRef = useRef<HTMLDivElement>(null);
 
   // ========================================
   // 2. GSAP 애니메이션
@@ -54,19 +48,10 @@ export default function AnimatedHero() {
       const title = titleRef.current;
       const description = descriptionRef.current;
       const buttons = buttonRef.current;
-      const content = contentRef.current;
-      const overlay = overlayRef.current;
       const video = videoRef.current;
 
       // DOM 준비 확인
-      if (
-        !section ||
-        !title ||
-        !description ||
-        !buttons ||
-        !content ||
-        !overlay
-      ) {
+      if (!section || !title || !description || !buttons) {
         return;
       }
 
@@ -127,105 +112,11 @@ export default function AnimatedHero() {
         "-=0.5",
       );
 
-      // ========================================
-      // 4. 스크롤에 따른 배경 밝기 변화
-      // ========================================
-
-      // 인트로가 끝난 상태를 기준으로
-      // 스크롤 밝기 애니메이션을 실행
-      const scrollTimeline = gsap.timeline({
-        defaults: {
-          ease: "none",
-        },
-
-        scrollTrigger: {
-          // Hero 영역을 기준으로 감지
-          trigger: section,
-
-          // Hero가 화면 상단에 있을 때 시작
-          start: "top top",
-
-          // 화면 높이의 120%만큼 스크롤
-          end: () => `+=${window.innerHeight * 0.5}`,
-
-          // 영상이 밝아지는 동안 화면 고정
-          pin: true,
-
-          // 스크롤 진행도에 따라 애니메이션 제어
-          scrub: 1,
-
-          // 브라우저 크기 변경 시 재계산
-          invalidateOnRefresh: true,
-
-          // 화면 고정 전환을 자연스럽게 처리
-          anticipatePin: 1,
-
-          // 디버깅 표시
-          markers: false,
-        },
-      });
-
-      // ========================================
-      // 5. 어두운 오버레이 제거
-      // ========================================
-
-      scrollTimeline.fromTo(
-        overlay,
-        {
-          // 시작: 어두운 오버레이 완전히 적용
-          opacity: 1,
-        },
-        {
-          // 종료: 오버레이를 거의 제거
-          opacity: 0.08,
-
-          // 전체 확대 과정 중 2초 비중
-          duration: 2,
-        },
-        0,
-      );
-
-      // ========================================
-      // 6. 스크롤에 따른 텍스트 퇴장
-      // ========================================
-
-      scrollTimeline.to(
-        content,
-        {
-          // 텍스트를 위로 이동
-          y: -80,
-
-          // 영상이 밝아지면서 텍스트 사라짐
-          opacity: 0,
-
-          // 스크롤 진행 초반부터 중반까지 실행
-          duration: 1.5,
-        },
-        0.3,
-      );
-
-      // ========================================
-      // 7. 밝아진 영상 잠시 유지
-      // ========================================
-
-      scrollTimeline.to(
-        {},
-        {
-          // 영상이 잘 보이는 구간 확보
-          duration: 0.8,
-        },
-      );
-
-      // ========================================
-      // 8. 컴포넌트 정리
-      // ========================================
-
       return () => {
         // SplitText가 변경한 HTML 원상복구
         split.revert();
 
-        // 나머지 GSAP 및 ScrollTrigger는
-        // useGSAP이 자동으로 정리
+        // useGSAP cleans up the remaining intro animations.
       };
     },
     {
@@ -234,11 +125,12 @@ export default function AnimatedHero() {
   );
 
   // ========================================
-  // 9. Hero 화면 JSX
+  // 4. Hero 화면 JSX
   // ========================================
 
   return (
     <section
+      data-header-tone="light"
       ref={containerRef}
       className="
         relative isolate
@@ -277,32 +169,45 @@ export default function AnimatedHero() {
         </video>
       </div>
 
-      {/* =====================================
-          스크롤에 따라 투명해지는 오버레이
-
-          시작: 영상 어둡게
-          종료: 영상 밝게 표시
-      ===================================== */}
-
-      <div
-        ref={overlayRef}
-        className="
-          pointer-events-none
-          absolute inset-0
-          -z-10
-          bg-gradient-to-r
-          from-[#111711]/95
-          via-[#111711]/80
-          to-[#111711]/60
-        "
-      />
+      {/* 영상 위에만 고정 질감을 적용해 글자와 버튼은 선명하게 유지합니다. */}
+      {HERO_FILM_OVERLAY ? (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 -z-10"
+          style={{
+            backgroundImage:
+              "linear-gradient(105deg, rgba(17,23,17,0.97) 0%, rgba(27,36,27,0.86) 38%, rgba(39,51,32,0.64) 70%, rgba(17,23,17,0.58) 100%)",
+          }}
+        >
+          <div
+            className="absolute inset-0 opacity-[0.07]"
+            style={{
+              backgroundImage: "url('/hero-film-grain.svg')",
+              backgroundRepeat: "repeat",
+              backgroundSize: "160px 160px",
+            }}
+          />
+        </div>
+      ) : (
+        <div
+          aria-hidden="true"
+          className="
+            pointer-events-none
+            absolute inset-0
+            -z-10
+            bg-gradient-to-r
+            from-[#111711]/95
+            via-[#111711]/80
+            to-[#111711]/60
+          "
+        />
+      )}
 
       {/* =====================================
           메인 콘텐츠
       ===================================== */}
 
       <div
-        ref={contentRef}
         className="
           relative z-10
           mx-auto w-full max-w-7xl

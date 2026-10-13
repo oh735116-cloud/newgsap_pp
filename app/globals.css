@@ -35,6 +35,17 @@ html {
   scroll-behavior: auto;
 }
 
+/* 섹션 배경에 대응하는 헤더 전경색: light는 밝은 글자, dark는 어두운 글자입니다. */
+.portfolio-header {
+  color: #f5f1e7;
+  --header-hover: #b2c69f;
+}
+
+.portfolio-header[data-tone="dark"] {
+  color: #20291f;
+  --header-hover: #4a603b;
+}
+
 body {
   margin: 0;
   background: var(--background);

@@ -75,6 +75,7 @@ export default function ParallaxSection() {
 
   return (
     <section
+      data-header-tone="light"
       ref={sectionRef}
       className="relative isolate h-[80vh] min-h-[500px] overflow-hidden"
     >

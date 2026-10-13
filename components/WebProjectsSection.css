@@ -78,6 +78,3 @@
   .digital-posterNote { bottom: 12px; right: 12px; font-size: 6px; }
   .digital-footer { flex-direction: column; }
 }
-
-/* 고정 헤더가 밝은 전시 배경에서도 읽히도록 상단에 딥그린 띠를 둡니다. */
-.digital-stage { background: linear-gradient(to bottom, #111711 0 84px, #eeeee5 84px 100%); }

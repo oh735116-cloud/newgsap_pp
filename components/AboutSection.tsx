@@ -225,6 +225,7 @@ export default function AboutSection() {
   return (
     <section
       id="about"
+      data-header-tone="dark"
       ref={sectionRef}
       className="
         relative scroll-mt-24
@@ -269,24 +270,6 @@ export default function AboutSection() {
           </span>
         </div>
 
-        {/* ==================================
-            메인 영문 제목
-        ================================== */}
-
-        <h2
-          ref={titleRef}
-          className="
-            portfolio-heading
-            max-w-6xl
-            text-5xl leading-[1.15]
-            md:text-7xl
-            lg:text-[clamp(4rem,7vw,7rem)]
-          "
-        >
-          Art is my foundation.
-          <br />
-          <span className="text-[#71865C]">Technology is my language.</span>
-        </h2>
 
         {/* ==================================
             공연 사진 + 자기소개

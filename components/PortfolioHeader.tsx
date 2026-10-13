@@ -1,9 +1,7 @@
 "use client";
 
 // React 상태 관리와 DOM 참조
-import { useRef, useState } from "react";
-// 내부 홈 이동은 Next.js Link로 처리하며 기존 스타일을 유지합니다.
-import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 
 // GSAP 애니메이션 라이브러리
 import gsap from "gsap";
@@ -28,6 +26,43 @@ export default function PortfolioHeader() {
 
   // 링크 복사 성공 여부
   const [copied, setCopied] = useState(false);
+
+  const [headerTone, setHeaderTone] = useState<"light" | "dark">("light");
+
+  useEffect(() => {
+    let lastCheck = -Infinity;
+    let currentTone: "light" | "dark" = "light";
+    const updateHeader = (time: number) => {
+      // 스크롤이 멈춘 뒤에도 진행되는 GSAP 전환을 반영하되 초당 10회로 제한합니다.
+      if (time - lastCheck < 0.1) return;
+      lastCheck = time;
+      const header = headerRef.current;
+      if (!header) return;
+
+      let nextTone: "light" | "dark" = "light";
+      // 고정/pin, clip-path, 가로 스크롤을 반영한 실제 헤더 아래 섹션을 찾습니다.
+      const elements = document.elementsFromPoint(window.innerWidth / 2, 42);
+      for (const element of elements) {
+        if (header.contains(element)) continue;
+        let surface = element.closest<HTMLElement>("[data-header-tone]");
+        if (!surface) continue;
+        // 퇴장 중 투명해진 섹션에서는 뒤에 있는 배경의 테마를 사용합니다.
+        while (surface && Number(getComputedStyle(surface).opacity) < 0.5) {
+          surface = surface.parentElement?.closest<HTMLElement>("[data-header-tone]") ?? null;
+        }
+        if (!surface) continue;
+        nextTone = surface.dataset.headerTone === "dark" ? "dark" : "light";
+        break;
+      }
+      if (nextTone !== currentTone) {
+        currentTone = nextTone;
+        setHeaderTone(nextTone);
+      }
+    };
+    updateHeader(0);
+    gsap.ticker.add(updateHeader);
+    return () => gsap.ticker.remove(updateHeader);
+  }, []);
 
   // ------------------------------------
   // 1. GSAP 헤더 등장 애니메이션
@@ -94,12 +129,10 @@ export default function PortfolioHeader() {
   return (
     <header
       ref={headerRef}
-      className="
-    fixed left-0 top-0 z-[60]
-    w-full
-    bg-transparent
-    text-[#F5F1E7]
-  "
+      data-tone={menuOpen ? "dark" : headerTone}
+      className={`portfolio-header fixed left-0 top-0 z-[60] w-full
+        transition-colors duration-200 motion-reduce:transition-none
+        ${menuOpen ? "bg-[#F8F7F3]" : "bg-transparent"}`}
     >
       {/* 메인 헤더 */}
       <div
@@ -112,11 +145,12 @@ export default function PortfolioHeader() {
         {/* ----------------------------
             왼쪽: 로고
         ---------------------------- */}
-        <Link
-          href="/"
+        <a
+          href="#top"
+          onClick={handleMenuClick}
           data-cursor-hover
           className="flex items-center gap-4"
-          aria-label="포트폴리오 홈"
+          aria-label="페이지 맨 위로 이동"
         >
           <span
             className="
@@ -129,7 +163,7 @@ export default function PortfolioHeader() {
           </span>
 
           {/* 로고 구분선 */}
-          <span className="h-5 w-px bg-[#D9D7CD]" />
+          <span className="h-5 w-px bg-current opacity-70" />
 
           <span
             className="
@@ -139,7 +173,7 @@ export default function PortfolioHeader() {
           >
             PORTFOLIO
           </span>
-        </Link>
+        </a>
 
         {/* ----------------------------
             가운데: PC 메뉴
@@ -157,7 +191,7 @@ export default function PortfolioHeader() {
                 header-menu-item relative
                 text-[13px] font-medium
                 transition-colors duration-300
-                hover:text-[#667C53]
+                hover:text-[var(--header-hover)]
               "
             >
               {menu.label}
@@ -174,10 +208,10 @@ export default function PortfolioHeader() {
             onClick={handleCopyLink}
             data-cursor-hover
             className="
-              border-b border-[#393B35]
+              border-b border-current
               pb-1 text-[13px]
               transition-colors duration-300
-              hover:text-[#667C53]
+              hover:text-[var(--header-hover)]
             "
           >
             {copied ? "복사 완료 ✓" : "링크 복사"}
@@ -201,13 +235,13 @@ export default function PortfolioHeader() {
           onClick={() => setMenuOpen(!menuOpen)}
         >
           <span
-            className={`h-[2px] w-6 bg-[#292B25]
+            className={`h-[2px] w-6 bg-current
               transition-transform duration-300
               ${menuOpen ? "translate-y-[3.5px] rotate-45" : ""}`}
           />
 
           <span
-            className={`h-[2px] w-6 bg-[#292B25]
+            className={`h-[2px] w-6 bg-current
               transition-transform duration-300
               ${menuOpen ? "-translate-y-[3.5px] -rotate-45" : ""}`}
           />
@@ -222,7 +256,7 @@ export default function PortfolioHeader() {
           id="portfolio-mobile-menu"
           className="
             border-t border-[#E7E5DC]
-            bg-[#F8F7F3]
+            bg-[#F8F7F3] text-[#292B25]
             px-6 py-7 md:hidden
           "
           aria-label="모바일 내비게이션"

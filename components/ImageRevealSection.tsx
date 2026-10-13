@@ -187,6 +187,7 @@ export default function ImageRevealSection() {
 
   return (
     <section
+      data-header-tone="light"
       ref={sectionRef}
       className="
         relative

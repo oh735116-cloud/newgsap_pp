@@ -25,7 +25,7 @@ import ImageRevealSection from "@/components/ImageRevealSection";
 export default function Home() {
   // clip은 스크롤 컨테이너를 만들지 않아 기존 pin을 유지하면서 회전 요소의 가로 넘침을 막습니다.
   return (
-    <main className="min-h-screen overflow-x-clip bg-[#111711] text-[#F5F1E7]">
+    <main id="top" data-header-tone="light" className="min-h-screen overflow-x-clip bg-[#111711] text-[#F5F1E7]">
       {/* 상단 고정 헤더 */}
       <PortfolioHeader />
 
@@ -75,6 +75,7 @@ export default function Home() {
 
       {/* 마지막 섹션 */}
       <section
+        data-header-tone="light"
         className="
           flex min-h-screen flex-col
           items-center justify-center

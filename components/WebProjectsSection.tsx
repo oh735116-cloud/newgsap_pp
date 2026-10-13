@@ -168,7 +168,7 @@ export default function WebProjectsSection() {
   }, { scope: rootRef });
 
   return (
-    <section ref={rootRef} id="development-works" aria-labelledby="digital-works-title" className={"digital-section"}>
+    <section ref={rootRef} id="development-works" data-header-tone="dark" aria-labelledby="digital-works-title" className={"digital-section"}>
       <div ref={stageRef} className={"digital-stage"}>
         <header className={"digital-heading"}>
           <p className={"digital-eyebrow"}>Selected Digital Works / 05</p>
