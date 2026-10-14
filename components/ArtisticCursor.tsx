@@ -98,11 +98,11 @@ export default function ArtisticCursor() {
           width: 32px;
           height: 32px;
           transform: translate(-50%, -50%);
-          border: 1px solid rgba(178, 198, 159, 0.8);
+          border: 1px solid rgba(169,194,232, 0.8);
           border-radius: 50%;
-          background: rgba(17, 23, 17, 0.08);
-          box-shadow: 0 0 0 1px rgba(17, 23, 17, 0.12);
-          color: #f5f1e7;
+          background: rgba(12,22,41, 0.08);
+          box-shadow: 0 0 0 1px rgba(12,22,41, 0.12);
+          color: #f1f5fc;
           transition: width 180ms ease, height 180ms ease, background 180ms ease, border-color 180ms ease;
         }
         .dot-shape {
@@ -110,8 +110,8 @@ export default function ArtisticCursor() {
           width: 5px;
           height: 5px;
           border-radius: 50%;
-          background: #e1eed4;
-          box-shadow: 0 0 0 1px rgba(17, 23, 17, 0.4);
+          background: #deebff;
+          box-shadow: 0 0 0 1px rgba(12,22,41, 0.4);
           transform: translate(-50%, -50%);
           transition: opacity 150ms ease;
         }
@@ -123,8 +123,8 @@ export default function ArtisticCursor() {
         .art-ring[data-active="true"] .ring-shape {
           width: 44px;
           height: 44px;
-          background: rgba(48, 74, 51, 0.92);
-          border-color: #b2c69f;
+          background: rgba(41,70,110, 0.92);
+          border-color: #a9c2e8;
         }
         .art-ring[data-active="true"] .cursor-arrow {
           opacity: 1;

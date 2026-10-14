@@ -137,8 +137,8 @@ export default function AnimatedHero() {
         flex h-screen min-h-[600px]
         items-center justify-center
         overflow-hidden
-        bg-[#111711]
-        px-6 text-[#F5F1E7]
+        bg-[#0c1629]
+        px-6 text-[#f1f5fc]
         md:px-16
       "
     >
@@ -176,7 +176,7 @@ export default function AnimatedHero() {
           className="pointer-events-none absolute inset-0 -z-10"
           style={{
             backgroundImage:
-              "linear-gradient(105deg, rgba(17,23,17,0.97) 0%, rgba(27,36,27,0.86) 38%, rgba(39,51,32,0.64) 70%, rgba(17,23,17,0.58) 100%)",
+              "linear-gradient(105deg, rgba(12,22,41,0.97) 0%, rgba(21,35,59,0.86) 38%, rgba(32,51,82,0.64) 70%, rgba(12,22,41,0.58) 100%)",
           }}
         >
           <div
@@ -196,9 +196,9 @@ export default function AnimatedHero() {
             absolute inset-0
             -z-10
             bg-gradient-to-r
-            from-[#111711]/95
-            via-[#111711]/80
-            to-[#111711]/60
+            from-[#0c1629]/95
+            via-[#0c1629]/80
+            to-[#0c1629]/60
           "
         />
       )}
@@ -219,7 +219,7 @@ export default function AnimatedHero() {
             mb-8
             text-xs font-semibold
             tracking-[0.35em]
-            text-[#B2C69F]
+            text-[#a9c2e8]
           "
         >
           MUSICIAN · ARTIST · CREATIVE DEVELOPER
@@ -279,10 +279,10 @@ export default function AnimatedHero() {
             data-cursor-hover
             className="
               text-sm font-medium
-              text-[#F5F1E7]
+              text-[#f1f5fc]
               underline underline-offset-8
               transition-colors
-              hover:text-[#B2C69F]
+              hover:text-[#a9c2e8]
             "
           >
             View Development Projects →

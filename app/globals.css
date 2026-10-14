@@ -6,14 +6,14 @@
 
 /* 1. 공통 색상 및 폰트 변수 */
 :root {
-  --background: #111711;
-  --foreground: #f5f1e7;
+  --background: #0c1629;
+  --foreground: #f1f5fc;
 
-  --color-olive: #667c53;
-  --color-ivory: #f5f1e7;
-  --color-gold: #b6a27a;
-  --color-muted: #a8b2a3;
-  --color-surface: #1b241b;
+  --color-olive: #4c658b;
+  --color-ivory: #f1f5fc;
+  --color-gold: #9cb3d5;
+  --color-muted: #a3b1c9;
+  --color-surface: #15233b;
 }
 
 /* 2. Tailwind CSS 테마 */
@@ -37,13 +37,23 @@ html {
 
 /* 섹션 배경에 대응하는 헤더 전경색: light는 밝은 글자, dark는 어두운 글자입니다. */
 .portfolio-header {
-  color: #f5f1e7;
-  --header-hover: #b2c69f;
+  color: #f1f5fc;
+  --header-hover: #a9c2e8;
+  background-color: rgba(12, 22, 41, 0.9);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  box-shadow: inset 0 -1px 0 rgba(169, 194, 232, 0.18);
 }
 
 .portfolio-header[data-tone="dark"] {
-  color: #20291f;
-  --header-hover: #4a603b;
+  color: #192a46;
+  --header-hover: #365780;
+  background-color: rgba(243, 246, 251, 0.94);
+  box-shadow: inset 0 -1px 0 rgba(52, 73, 104, 0.16);
+}
+
+.portfolio-header[data-menu-open="true"] {
+  background-color: #f3f6fb;
 }
 
 body {
@@ -82,11 +92,11 @@ body {
   gap: 12px;
 
   padding: 16px 28px;
-  border: 1px solid var(--color-olive);
+  border: 1px solid #1b3152;
   border-radius: 999px;
 
-  color: var(--color-ivory);
-  background: var(--color-olive);
+  color: #ffffff;
+  background: #354c6e;
 
   font-size: 14px;
   font-weight: 600;
@@ -97,8 +107,8 @@ body {
 }
 
 .portfolio-button:hover {
-  background: #7e9668;
-  border-color: #7e9668;
+  background: #1c314e;
+  border-color: #29466e;
 }
 
 /* 8. GSAP Custom Cursor 유지 */

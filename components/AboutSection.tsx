@@ -230,9 +230,9 @@ export default function AboutSection() {
       className="
         relative scroll-mt-24
         overflow-hidden
-        bg-[#F3F0E8]
+        bg-[#edf2f9]
         px-6 py-28
-        text-[#20291F]
+        text-[#192a46]
         md:px-16 md:py-36
       "
     >
@@ -246,7 +246,7 @@ export default function AboutSection() {
             mb-14 flex flex-wrap
             items-center justify-between
             gap-4 border-b
-            border-[#BCC5B4]
+            border-[#b7c5da]
             pb-6
           "
         >
@@ -254,7 +254,7 @@ export default function AboutSection() {
             className="
               text-xs font-semibold
               tracking-[0.25em]
-              text-[#667C53]
+              text-[#4c658b]
             "
           >
             01 / ABOUT ME
@@ -263,7 +263,7 @@ export default function AboutSection() {
           <span
             className="
               text-xs tracking-[0.15em]
-              text-[#6D7469]
+              text-[#63718a]
             "
           >
             ARTIST & CREATIVE DEVELOPER
@@ -288,7 +288,7 @@ export default function AboutSection() {
             className="
               relative aspect-[4/5]
               overflow-hidden
-              bg-[#263126]
+              bg-[#1c2e4b]
             "
           >
             <Image
@@ -328,10 +328,10 @@ export default function AboutSection() {
                 mb-6 text-xs
                 font-semibold
                 tracking-[0.25em]
-                text-[#667C53]
+                text-[#4c658b]
               "
             >
-              MY STORY
+              MY STORY · 성장과정
             </p>
 
             <h3
@@ -343,31 +343,35 @@ export default function AboutSection() {
                 md:text-4xl
               "
             >
-              음악으로 시작한 경험을
-              <br />
-              기술로 확장합니다.
+              음악을 무대를 향한 이해로.
             </h3>
 
             <div
               className="
                 space-y-6
                 text-base leading-[2]
-                text-[#566052]
+                text-[#4e607c]
               "
             >
               <p className="about-story-item">
-                대학에서 타악기를 전공하며 음악과 공연예술 분야의 전문성을
-                쌓아왔습니다.
+                어린 시절부터 음악과 공연을 좋아했습니다.<br/> 
+                중학교 밴드부 활동과
+                고등학교 관악부 활동으로 무대를 경험했고,<br/> 대학에서 타악기를
+                전공하며 군악대에서도 연주와 단체 활동을 이어갔습니다.
               </p>
 
               <p className="about-story-item">
-                학교와 문화센터에서 드럼 및 타악기 수업을 진행하며 다양한
-                사람들과 소통하고, 함께 성장하는 경험을 쌓았습니다.
+                오페라와 뮤지컬을 즐겨 보며 공연에 대한 시야를 넓혔습니다.
+                <br/>
+                특히 뮤지컬 『오페라의 유령』의 움직이는 샹들리에를 보며,
+                <br/>
+                음악과 무대 연출이 함께 만드는 감동을 느꼈습니다.
               </p>
 
               <p className="about-story-item">
-                이제는 예술적 감각을 바탕으로 웹 개발과 인터랙티브 기술을 활용해
-                새로운 디지털 경험을 구현하고 있습니다.
+                전역 후 공연 무대 설치 아르바이트를 통해 무대 준비 과정과
+                스태프의 역할을 배웠습니다. 감상과 연주를 넘어, 하나의 무대가
+                완성되는 과정에도 관심을 갖게 되었습니다.
               </p>
             </div>
 
@@ -376,17 +380,21 @@ export default function AboutSection() {
               className="
                 about-story-item
                 mt-12 border-t
-                border-[#BCC5B4]
+                border-[#b7c5da]
                 pt-7
               "
             >
               <p
                 className="
                   font-serif text-xl
-                  italic text-[#667C53]
+                  italic text-[#4c658b]
                 "
               >
-                Creating beyond boundaries.
+                <br/>
+              이러한 경험을 바탕으로 공연예술에 대한 열정과 현장 이해를 갖추고, 
+              <br/>
+              <br/>
+              관객에게 감동을 전하는 무대를 만드는 데 기여하고 싶습니다.
               </p>
             </div>
           </div>
@@ -409,7 +417,7 @@ export default function AboutSection() {
               className="
                 about-skill-card
                 border-t
-                border-[#AEB8A5]
+                border-[#a8b9d1]
                 pt-6
               "
             >
@@ -417,7 +425,7 @@ export default function AboutSection() {
               <p
                 className="
                   mb-8 text-sm
-                  text-[#667C53]
+                  text-[#4c658b]
                 "
               >
                 {item.number}
@@ -439,7 +447,7 @@ export default function AboutSection() {
                 className="
                   mt-3 text-sm
                   font-semibold
-                  text-[#394A35]
+                  text-[#344e74]
                 "
               >
                 {item.subtitle}
@@ -450,7 +458,7 @@ export default function AboutSection() {
                 className="
                   mt-5 max-w-xs
                   text-sm leading-7
-                  text-[#667064]
+                  text-[#5d6e89]
                 "
               >
                 {item.description}

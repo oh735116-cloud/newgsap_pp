@@ -130,9 +130,9 @@ export default function PortfolioHeader() {
     <header
       ref={headerRef}
       data-tone={menuOpen ? "dark" : headerTone}
-      className={`portfolio-header fixed left-0 top-0 z-[60] w-full
-        transition-colors duration-200 motion-reduce:transition-none
-        ${menuOpen ? "bg-[#F8F7F3]" : "bg-transparent"}`}
+      data-menu-open={menuOpen}
+      className="portfolio-header fixed left-0 top-0 z-[60] w-full
+        transition-colors duration-200 motion-reduce:transition-none"
     >
       {/* 메인 헤더 */}
       <div
@@ -255,8 +255,8 @@ export default function PortfolioHeader() {
         <nav
           id="portfolio-mobile-menu"
           className="
-            border-t border-[#E7E5DC]
-            bg-[#F8F7F3] text-[#292B25]
+            border-t border-[#dce4f0]
+            bg-[#f3f6fb] text-[#1d2d48]
             px-6 py-7 md:hidden
           "
           aria-label="모바일 내비게이션"
@@ -278,7 +278,7 @@ export default function PortfolioHeader() {
               onClick={handleCopyLink}
               className="
                 self-start border-b
-                border-[#393B35] pb-1 text-sm
+                border-[#344968] pb-1 text-sm
               "
             >
               {copied ? "복사 완료 ✓" : "링크 복사"}
