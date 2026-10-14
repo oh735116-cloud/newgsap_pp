@@ -1,26 +1,17 @@
 /* 전용 접두사를 사용해 기존 Hero·About·실습의 스타일과 분리합니다. */
-.digital-section { background: #eeeee5; color: #243b2c; scroll-margin-top: 0; }
+.digital-section { background: #f5f5f7; color: #1d1d1f; scroll-margin-top: 0; font-family: var(--font-geist-sans), Arial, sans-serif; }
 .digital-stage { padding: 112px 0 48px; overflow: clip; }
 .digital-heading { padding: 0 6vw 30px; }
 .digital-eyebrow { color: #526448; font: 11px var(--font-geist-mono), monospace; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 20px; }
 .digital-heading h2 { font-size: clamp(2.8rem, 5.2vw, 6rem); line-height: 1.05; }
 .digital-heading em { color: #64764b; font-weight: 400; }
 .digital-intro { display: flex; justify-content: space-between; gap: 24px; margin-top: 22px; color: #52604e; font-size: 14px; line-height: 1.8; word-break: keep-all; }
-.digital-scrollHint { display: none; align-items: center; gap: 24px; font: 10px var(--font-geist-mono), monospace; letter-spacing: .12em; }
-.digital-scrollHint span { font-size: 24px; }
 .digital-track { position: relative; }
 /* 한 작품을 한 장의 넓은 전시 지면으로 구성합니다. 카드 외곽선은 사용하지 않습니다. */
 .digital-panel { min-width: 0; padding: 36px 6vw 60px; }
 .digital-visual { display: flex; align-items: center; justify-content: center; background: #d9ddce; padding: clamp(18px, 3vw, 44px); min-width: 0; transform-origin: center; }
-.digital-panel:nth-child(2) .digital-visual { background: #cbd2c1; }
-.digital-panel:nth-child(3) .digital-visual { background: #e1dccc; }
-.digital-panel:nth-child(4) .digital-visual { background: #c3cbb7; }
-.digital-panel:nth-child(5) .digital-visual { background: #dadfce; }
 .digital-device { position: relative; overflow: hidden; background: #172a20; box-shadow: 0 22px 38px #14291e24; }
 .digital-browser { width: 100%; border: 1px solid #ffffff40; border-radius: 9px; }
-.digital-chrome { height: 32px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 14px; background: #f5f5ee; color: #4b5844; font: 9px var(--font-geist-mono), monospace; }
-.digital-dots { font-size: 7px; letter-spacing: 3px; white-space: nowrap; color: #839274; }
-.digital-address { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .digital-screen { position: relative; aspect-ratio: 16 / 10; overflow: hidden; }
 /* 이미지가 없을 때는 색면과 큰 기하 도형으로 작품의 개별 리듬을 표현합니다. */
 .digital-poster { --poster-bg: #213e2d; --poster-ink: #78966a; position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--poster-bg); color: #f5f1e7; }
@@ -53,18 +44,6 @@
 .digital-links a:focus-visible { outline: 3px solid #2b442f; outline-offset: 5px; }
 .digital-footer { display: flex; justify-content: space-between; gap: 16px; margin: 0 6vw; padding-top: 20px; border-top: 1px solid #a7af9766; color: #58694c; font: 9px var(--font-geist-mono), monospace; letter-spacing: .14em; }
 /* 가로 트랙에서는 소개문과 큰 비주얼을 좌우로 배치합니다. 높이가 낮으면 세로 기본값으로 돌아갑니다. */
-.digital-horizontal .digital-stage { height: 100svh; min-height: 760px; padding-top: 105px; }
-.digital-horizontal .digital-track { display: flex; width: 100%; }
-.digital-horizontal .digital-panel { flex: 0 0 94%; display: grid; grid-template-columns: minmax(0, 28fr) minmax(0, 72fr); gap: 3vw; padding: 8px 3vw 28px; }
-.digital-horizontal .digital-panel:first-child { margin-left: 3vw; }
-.digital-horizontal .digital-panel:last-child { margin-right: 3vw; }
-.digital-horizontal .digital-visual { order: 2; height: clamp(350px, 51vh, 670px); }
-.digital-horizontal .digital-caption { order: 1; justify-content: center; padding: 0; gap: 26px; }
-.digital-horizontal .digital-index { font-size: clamp(50px, 6vw, 90px); margin-bottom: 6px; }
-.digital-horizontal .digital-browser { width: min(100%, calc((51vh - 110px) * 1.6)); }
-.digital-horizontal .digital-phone { height: 100%; width: auto; aspect-ratio: 9 / 18; }
-.digital-horizontal .digital-phone .digital-screen { height: 100%; aspect-ratio: auto; }
-.digital-horizontal .digital-scrollHint { display: flex; }
 @media (max-width: 600px) {
   .digital-stage { padding-top: 96px; }
   .digital-heading h2 { max-width: 10ch; }
@@ -77,4 +56,57 @@
   .digital-posterLabel { top: 12px; left: 12px; font-size: 6px; }
   .digital-posterNote { bottom: 12px; right: 12px; font-size: 6px; }
   .digital-footer { flex-direction: column; }
+}
+
+/* 원본 화면이 잘리지 않도록 전체 비율을 유지합니다. 긴 메인 화면도 모두 보입니다. */
+.digital-screenshot { object-fit: contain; object-position: center; background: #f5f5ee; }
+.digital-phone .digital-screenshot { background: #fff; }
+.digital-shotPicker { display: flex; flex-wrap: wrap; gap: 6px; }
+.digital-shotPicker button { min-height: 44px; padding: 8px 12px; border: 1px solid #9aa689; border-radius: 4px; color: #42563b; background: transparent; font-size: 11px; }
+.digital-shotPicker button[aria-pressed="true"] { background: #d5ddc9; border-color: #42563b; color: #243b2c; }
+.digital-shotPicker button:focus-visible { outline: 2px solid #2b442f; outline-offset: 3px; }
+/* 설명과 화면 선택이 늘어나도 낮은 데스크톱 화면에서 버튼이 잘리지 않게 간격을 조정합니다. */
+/* Minimal showroom: edge-to-edge displays in an open, neutral space. */
+.digital-stage { background: radial-gradient(ellipse at 65% 30%, #fff 0%, #f5f5f7 65%); }
+.digital-heading h2 { font-family: var(--font-geist-sans), Arial, sans-serif; font-weight: 600; letter-spacing: -.065em; }
+.digital-heading em { font-style: normal; color: #86868b; }
+.digital-eyebrow, .digital-intro, .digital-summary, .digital-kind { color: #6e6e73; }
+.digital-visual { position: relative; isolation: isolate; background: transparent; padding: 40px 24px; min-height: 340px; }
+.digital-displayUnit { position: relative; z-index: 2; width: min(100%, 720px); display: flex; flex-direction: column; align-items: center; }
+.digital-device { box-shadow: 0 2px 3px #0003, 0 18px 30px #00000012; }
+.digital-browser { width: 100%; padding: 6px; border: 1px solid #55565a; border-radius: 12px; background: #202124; box-shadow: 0 1px 2px #00000020, 0 16px 38px -20px #20212440; }
+.digital-browser .digital-screen { border: 0; border-radius: 6px; }
+.digital-display-mobile .digital-displayUnit { width: min(220px, 64%); }
+.digital-phone { width: 100%; border: 6px solid #343436; outline: 1px solid #9b9b9f; background: #343436; border-radius: 32px; box-shadow: 2px 0 0 2px #d3d3d6, 0 20px 26px #0002; }
+.digital-notch { background: #171719; }
+.digital-index { display: none; }
+.digital-caption h3 { font-weight: 600; letter-spacing: -.055em; }
+.digital-tags li { color: #6e6e73; border: 0; background: #e8e8ed; border-radius: 6px; }
+.digital-links a { background: #1d1d1f; border-color: #1d1d1f; color: #fff; }
+.digital-links a + a { color: #1d1d1f; background: transparent; }
+.digital-links a:hover { background: #454548; color: #fff; }
+.digital-links a:focus-visible, .digital-shotPicker button:focus-visible { outline-color: #0071e3; }
+.digital-shotPicker { gap: 2px; padding: 3px; background: #e8e8ed; border-radius: 999px; }
+.digital-shotPicker button { border: 0; border-radius: 999px; color: #6e6e73; padding: 8px 16px; }
+.digital-shotPicker button[aria-pressed="true"] { background: #fff; color: #1d1d1f; box-shadow: 0 1px 4px #00000012; }
+.digital-footer { border-color: #d2d2d7; color: #6e6e73; }
+@media (max-width: 600px) {
+  .digital-heading h2 { font-size: clamp(2.6rem, 10vw, 3.8rem); max-width: 12ch; }
+  .digital-visual { padding: 28px 8px 36px; min-height: 260px; }
+  .digital-browser { padding: 4px; border-radius: 9px; }
+  .digital-caption { padding-top: 0; }
+  .digital-summary { max-width: 42ch; }
+}
+
+/* Normal document scrolling; web displays share the Nadeul Plan frame size. */
+.digital-panel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); align-items: start; gap: clamp(32px, 6vw, 100px); max-width: 1600px; margin: 0 auto; padding-top: 72px; padding-bottom: 96px; }
+.digital-visual { grid-column: 2; grid-row: 1; padding: 0; min-height: 0; }
+.digital-displayUnit { width: 100%; }
+.digital-caption { grid-column: 1; grid-row: 1; padding-top: 24px; }
+.digital-screenshot { object-fit: cover; object-position: top center; background: #fff; }
+.digital-display-mobile .digital-displayUnit { width: min(320px, 75%); }
+@media (max-width: 800px) {
+  .digital-panel { display: flex; flex-direction: column; gap: 28px; padding-top: 36px; padding-bottom: 64px; }
+  .digital-visual { width: 100%; }
+  .digital-caption { padding-top: 0; }
 }

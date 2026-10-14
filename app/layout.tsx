@@ -7,10 +7,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 // 전체 CSS
 import "./globals.css";
 
-// STEP 7에서 만든 페이지 전환 컴포넌트
-import PageTransition from "@/components/PageTransition";
-
-// STEP 8에서 만든 커스텀 커서 컴포넌트
+// 포트폴리오 커스텀 커서
 import CustomCursor from "@/components/CustomCursor";
 
 // ========================================
@@ -30,8 +27,8 @@ const geistMono = Geist_Mono({
 // 2. 사이트 메타데이터
 // ========================================
 export const metadata: Metadata = {
-  title: "GSAP Animation Practice",
-  description: "Next.js와 GSAP 애니메이션 실습",
+  title: "Hg | Portfolio",
+  description: "음악과 공연예술의 경험을 디지털 기술로 확장하는 포트폴리오. 예술 활동과 웹 프로젝트를 소개합니다.",
 };
 
 // ========================================
@@ -50,10 +47,7 @@ export default function RootLayout({
         {/* 각 페이지의 실제 화면 */}
         {children}
 
-        {/* STEP 7: 페이지 전환 애니메이션 */}
-        <PageTransition />
-
-        {/* STEP 8: 원형 커스텀 마우스 커서 */}
+        {/* 커스텀 마우스 커서 */}
         <CustomCursor />
       </body>
     </html>

@@ -275,7 +275,7 @@ export default function AnimatedHero() {
           </a>
 
           <a
-            href="/projects"
+            href="#development-works"
             data-cursor-hover
             className="
               text-sm font-medium
