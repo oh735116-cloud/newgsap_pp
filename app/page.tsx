@@ -3,6 +3,8 @@ import AnimatedHero from "@/components/AnimatedHero";
 import AboutSection from "@/components/AboutSection";
 import ArtisticCareerSection from "@/components/ArtisticCareerSection";
 import WebProjectsSection from "@/components/WebProjectsSection";
+import ClosingSection from "@/components/ClosingSection";
+import PageScrollControls from "@/components/PageScrollControls";
 
 export default function Home() {
   return (
@@ -12,6 +14,8 @@ export default function Home() {
       <AboutSection />
       <ArtisticCareerSection />
       <WebProjectsSection />
+      <ClosingSection />
+      <PageScrollControls />
     </main>
   );
 }

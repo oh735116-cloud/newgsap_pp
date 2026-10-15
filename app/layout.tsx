@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 
 // Next.js 기본 폰트
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist } from "next/font/google";
 
 // 전체 CSS
 import "./globals.css";
@@ -15,11 +15,6 @@ import CustomCursor from "@/components/CustomCursor";
 // ========================================
 const geistSans = Geist({
   variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 
@@ -41,9 +36,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} antialiased`}>
         {/* 각 페이지의 실제 화면 */}
         {children}
 

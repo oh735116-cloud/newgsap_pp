@@ -72,7 +72,7 @@ const chapters: Chapter[] = [
     english: "With the Stage",
     description:
       "무대에서는 클래식부터 마칭 퍼커션까지 다양한 장르의 공연에 참여했습니다.크로마앙상블, 경북타악앙상블, 마칭타악단체 매드라인, 노이앙상블 등 여러 연주단체에서 활동하며 폭넓은 무대 경험을 쌓았습니다.안동오케스트라의 ‘협주곡의 밤’에 출연했으며, 크로마앙상블과 함께 경주 APEC 관련 기념행사에서도 연주했습니다.군악대 복무 중에는 다수의 공식 행사와 공연에 참여하며 다양한 환경에서의 연주 경험을 넓혔습니다.또한 문화예술 지원사업인 ‘청춘마이크’에 참여하며 공연을 위한 지원 절차와 사업 진행 과정을 경험했습니다.여러 공연을 준비하면서 주관기관의 공모에 지원하고 선정되어 실제 무대에 오르기까지의 과정도 경험했습니다.연주 활동 외에도 공연 무대 설치 아르바이트를 통해 무대 준비 과정과 현장 스태프의 역할을 기초적으로 익혔습니다.이러한 경험을 바탕으로 음악 공연뿐 아니라 연극·뮤지컬 등 다양한 공연예술 분야의 제작 및 운영 업무에도 참여하고 싶습니다.",
-    keywords: ["PERFORMANCE", "PLANNING", "PRODUCTION","ART"],
+    keywords: ["PERFORMANCE", "PLANNING", "PRODUCTION", "ART"],
     graphic: "performance",
     image: "/04-performance.jpg",
     imageAlt: "군악대 및 공연·문화행사 활동",
@@ -331,14 +331,14 @@ function ChapterContent({ chapter }: { chapter: Chapter }) {
   return (
     <div className="w-full max-w-lg">
       <div className="mb-6 flex flex-wrap items-center gap-4">
-        <span className="font-serif text-5xl text-[#b6cbed]">
+        <span className="font-sans text-5xl text-[#b6cbed]">
           {chapter.number}
         </span>
         <span className="text-xs tracking-[0.2em] text-[#aac1e4]">
           {chapter.category}
         </span>
       </div>
-      <h3 className="font-serif text-3xl leading-tight text-[#deebff] lg:text-4xl">
+      <h3 className="font-sans text-3xl leading-tight text-[#deebff] lg:text-4xl">
         {chapter.english}
       </h3>
       <p className="mt-6 break-keep text-base leading-8 text-[#bdcbe0]">
@@ -388,7 +388,11 @@ export default function ArtisticCareerSection() {
             const current = Math.min(chapters.length - 1, Math.floor(position));
             const next = Math.min(current + 1, chapters.length - 1);
             // Hold each photo briefly, then ease into the next image.
-            const transition = gsap.utils.clamp(0, 1, (position - current - 0.2) / 0.6);
+            const transition = gsap.utils.clamp(
+              0,
+              1,
+              (position - current - 0.2) / 0.6,
+            );
             const blend = transition * transition * (3 - 2 * transition);
             const active = blend < 0.5 ? current : next;
             // Keep the incoming photo opaque underneath to avoid a dark dip.
@@ -408,7 +412,10 @@ export default function ArtisticCareerSection() {
                 autoAlpha: index === active ? textAlpha : 0,
                 y: index === active ? (1 - textAlpha) * 10 : 10,
               });
-              panel.setAttribute("aria-hidden", String(index !== active || textAlpha === 0));
+              panel.setAttribute(
+                "aria-hidden",
+                String(index !== active || textAlpha === 0),
+              );
             });
             gsap.set(progressRef.current, { scaleX: position / 4 });
             if (indicatorRef.current)
@@ -422,7 +429,7 @@ export default function ArtisticCareerSection() {
             scrollTrigger: {
               trigger: section,
               start: "top top",
-              end: () => "+=" + window.innerHeight * 4,
+              end: () => "+=" + window.innerHeight * 3,
               pin: true,
               scrub: 1,
               invalidateOnRefresh: true,
@@ -445,11 +452,11 @@ export default function ArtisticCareerSection() {
       data-header-tone="light"
       ref={sectionRef}
       aria-label="Artistic Journey"
-      className="relative isolate overflow-hidden bg-[#0c1629] text-[#f1f5fc]"
+      className="relative isolate -mt-px overflow-hidden bg-[#0c1629] text-[#f1f5fc]"
     >
       <div className="career-desktop relative h-screen overflow-hidden bg-[#0c1629]">
         <h2 className="absolute left-[7vw] top-30 z-20 text-xs tracking-[0.3em] text-[#b1c6e8]">
-          02 / ARTISTIC JOURNEY
+          ART & IT
         </h2>
         <div className="absolute inset-y-0 left-0 z-20 w-1/2 py-36 pl-[7vw] pr-[3vw]">
           <div ref={textRef} className="relative h-full">
@@ -466,10 +473,7 @@ export default function ArtisticCareerSection() {
             ))}
           </div>
         </div>
-        <div
-          className="absolute inset-y-0 right-0 w-[65%]"
-          aria-hidden="true"
-        >
+        <div className="absolute inset-y-0 right-0 w-[65%]" aria-hidden="true">
           <div
             ref={galleryRef}
             className="relative h-full w-full overflow-hidden bg-[#1b3152]"
@@ -487,7 +491,10 @@ export default function ArtisticCareerSection() {
             ))}
           </div>
         </div>
-        <div className="career-background-shade pointer-events-none absolute inset-0 z-10" aria-hidden="true" />
+        <div
+          className="career-background-shade pointer-events-none absolute inset-0 z-10"
+          aria-hidden="true"
+        />
         <div className="absolute bottom-10 left-[7%] z-20 w-[86%] text-[#b1c6e8]">
           <div className="mb-4 flex justify-between text-[10px] tracking-[0.2em]">
             <span>SCROLL TO EXPLORE</span>
@@ -518,13 +525,19 @@ export default function ArtisticCareerSection() {
             key={chapter.number}
             className="relative isolate overflow-hidden border-t border-white/10 px-6 py-16 md:py-24"
           >
-            <div className="absolute inset-0 -z-20 md:left-[35%]" aria-hidden="true">
+            <div
+              className="absolute inset-0 -z-20 md:left-[35%]"
+              aria-hidden="true"
+            >
               <ChapterImage chapter={chapter} />
             </div>
-            <div className="career-static-shade pointer-events-none absolute inset-0 -z-10" aria-hidden="true" />
+            <div
+              className="career-static-shade pointer-events-none absolute inset-0 -z-10"
+              aria-hidden="true"
+            />
             <div className="mx-auto max-w-7xl md:pl-[4vw]">
               <div className="md:w-1/2">
-              <ChapterContent chapter={chapter} />
+                <ChapterContent chapter={chapter} />
               </div>
             </div>
           </article>
@@ -539,15 +552,38 @@ export default function ArtisticCareerSection() {
         }
         .career-background-shade {
           background:
-            linear-gradient(to top, #0c1629 0%, rgba(12, 22, 41, 0.75) 12%, transparent 35%),
-            linear-gradient(to right, #0c1629 0%, #0c1629 35%, rgba(12, 22, 41, 0.96) 43%, rgba(12, 22, 41, 0.55) 57%, rgba(12, 22, 41, 0.08) 78%, transparent 100%);
+            linear-gradient(
+              to top,
+              #0c1629 0%,
+              rgba(12, 22, 41, 0.75) 12%,
+              transparent 35%
+            ),
+            linear-gradient(
+              to right,
+              #0c1629 0%,
+              #0c1629 35%,
+              rgba(12, 22, 41, 0.96) 43%,
+              rgba(12, 22, 41, 0.55) 57%,
+              rgba(12, 22, 41, 0.08) 78%,
+              transparent 100%
+            );
         }
         .career-static-shade {
-          background: linear-gradient(to right, rgba(12, 22, 41, 0.96), rgba(12, 22, 41, 0.78));
+          background: linear-gradient(
+            to right,
+            rgba(12, 22, 41, 0.96),
+            rgba(12, 22, 41, 0.78)
+          );
         }
         @media (min-width: 768px) {
           .career-static-shade {
-            background: linear-gradient(to right, #0c1629 30%, rgba(12, 22, 41, 0.95) 45%, rgba(12, 22, 41, 0.3) 75%, rgba(12, 22, 41, 0.12));
+            background: linear-gradient(
+              to right,
+              #0c1629 30%,
+              rgba(12, 22, 41, 0.95) 45%,
+              rgba(12, 22, 41, 0.3) 75%,
+              rgba(12, 22, 41, 0.12)
+            );
           }
         }
         @media (min-width: 768px) and (min-height: 700px) and (prefers-reduced-motion: no-preference) {

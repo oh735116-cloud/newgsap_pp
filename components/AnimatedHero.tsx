@@ -214,7 +214,7 @@ export default function AnimatedHero() {
         "
       >
         {/* 상단 소개 */}
-        <p
+        {/* <p
           className="
             mb-8
             text-xs font-semibold
@@ -223,7 +223,7 @@ export default function AnimatedHero() {
           "
         >
           MUSICIAN · ARTIST · CREATIVE DEVELOPER
-        </p>
+        </p> */}
 
         {/* 메인 제목 */}
         <h1
@@ -277,15 +277,10 @@ export default function AnimatedHero() {
           <a
             href="#development-works"
             data-cursor-hover
-            className="
-              text-sm font-medium
-              text-[#f1f5fc]
-              underline underline-offset-8
-              transition-colors
-              hover:text-[#a9c2e8]
-            "
+            className="portfolio-button"
           >
-            View Development Projects →
+            View Development Projects
+            <span aria-hidden="true">↗</span>
           </a>
         </div>
       </div>

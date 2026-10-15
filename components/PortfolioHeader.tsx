@@ -12,9 +12,9 @@ gsap.registerPlugin(useGSAP);
 
 // 메뉴 데이터
 const menus = [
-  { label: "소개", href: "#about" },
-  { label: "예술 활동", href: "#artistic-works" },
-  { label: "작업", href: "#development-works" },
+  { label: "ABOUT", href: "#about" },
+  { label: "ART", href: "#artistic-works" },
+  { label: "WORK", href: "#development-works" },
 ];
 
 export default function PortfolioHeader() {
@@ -48,7 +48,9 @@ export default function PortfolioHeader() {
         if (!surface) continue;
         // 퇴장 중 투명해진 섹션에서는 뒤에 있는 배경의 테마를 사용합니다.
         while (surface && Number(getComputedStyle(surface).opacity) < 0.5) {
-          surface = surface.parentElement?.closest<HTMLElement>("[data-header-tone]") ?? null;
+          surface =
+            surface.parentElement?.closest<HTMLElement>("[data-header-tone]") ??
+            null;
         }
         if (!surface) continue;
         nextTone = surface.dataset.headerTone === "dark" ? "dark" : "light";
@@ -154,7 +156,7 @@ export default function PortfolioHeader() {
         >
           <span
             className="
-              font-serif text-[39px]
+              font-sans text-[39px]
               font-normal leading-none
               tracking-[-0.08em]
             "
@@ -214,7 +216,7 @@ export default function PortfolioHeader() {
               hover:text-[var(--header-hover)]
             "
           >
-            {copied ? "복사 완료 ✓" : "링크 복사"}
+            {copied ? "COMPLETE ✓" : "LINK COPY"}
           </button>
         </div>
 
@@ -294,4 +296,3 @@ export default function PortfolioHeader() {
     </header>
   );
 }
-
